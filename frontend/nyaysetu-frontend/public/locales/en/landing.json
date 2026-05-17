@@ -1,10 +1,12 @@
 {
     "hero": {
+        "aboutHeroTag" : "India's First AI-Powered Judiciary Platform",
         "title": "AI-Powered Digital Justice",
         "titleHighlight": "for Every Citizen",
         "subtitle": "Access justice from anywhere, anytime. File cases, track progress, attend virtual hearings, and get AI-powered legal assistance—all on a single transparent platform.",
         "getStartedFree": "Get Started Free",
-        "watchDemo": "Watch Demo"
+        "watchDemo": "Watch Demo",
+        "installApp": "Install App"
     },
     "stats": {
         "casesFiled": "Cases Filed",
@@ -73,6 +75,80 @@
         "ctaText": "🎯 Ready to experience the future of justice?",
         "ctaButton": "Start Your Journey"
     },
+    "trustIndicators": {
+        "title": "Trusted by Thousands",
+
+        "subtitle": "Your security and privacy are our top priorities",
+
+        "security": {
+            "title": "Bank-Grade Security",
+            "description": "256-bit encryption protects your data"
+        },
+
+        "certified": {
+            "title": "Government Certified",
+            "description": "Approved by Ministry of Law & Justice"
+        },
+
+        "users": {
+            "title": "50,000+ Active Users",
+            "description": "Growing community of satisfied citizens"
+        },
+
+        "success": {
+            "title": "99% Success Rate",
+            "description": "Cases resolved efficiently and fairly"
+        },
+
+        "availability": {
+            "title": "24/7 Availability",
+            "description": "Access justice anytime, anywhere"
+        },
+
+        "privacy": {
+            "title": "Data Privacy",
+            "description": "GDPR compliant & ISO certified"
+        }
+    },
+    "achievements": {
+  "headerBadge": "OUR ACHIEVEMENTS",
+
+  "title": "Recognized for ",
+
+  "titleHighlight": "Excellence",
+
+  "subtitle": "Celebrating our journey of innovation and recognition in legal technology",
+
+  "viewSubmission": "View Submission Materials",
+
+  "viewReport": "View Report",
+
+  "viewPresentation": "View Presentation",
+
+  "watchVideo": "Watch Video",
+
+  "certificateTitle": "Certificate of Achievement",
+
+  "viewCertificate": "View Certificate",
+
+  "vois": {
+    "title": "VOIS Finale",
+
+    "subtitle": "Top 50 Finalist",
+
+    "badge": "Ongoing",
+
+    "description": "Selected among the top 50 finalists in the VOIS for Tech Innovation Marathon 2.0, a prestigious national competition demonstrating excellence in legal technology innovation."
+  },
+
+  "esubmit": {
+    "title": "e-Submit Pune Zonal",
+
+    "subtitle": "Secured Rank 2",
+
+    "description": "Achieved 2nd rank in the e-Submit Pune Zonal competition and won a cash prize, recognized for innovative solutions in digital legal services."
+  }
+},
     "footer": {
         "tagline": "India's first AI-powered virtual judiciary platform, making justice accessible to every citizen.",
         "quickLinks": "Quick Links",
@@ -81,6 +157,9 @@
         "viewRepository": "View Repository",
         "copyright": "NyaySetu. Made with",
         "by": "by Virendra Gadekar",
-        "allRightsReserved": "All rights reserved."
+        "allRightsReserved": "All rights reserved.",
+        "privacyPolicy": "Privacy Policy",
+        "termsOfService": "Terms of Service",
+        "disclaimer": "Disclaimer"
     }
 }

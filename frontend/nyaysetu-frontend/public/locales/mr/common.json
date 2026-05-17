@@ -1,1 +1,65 @@
-{"placeholder": "To be added"}
+{
+  "header": {
+    "nav": {
+      "home": "मुख्यपृष्ठ",
+      "features": "वैशिष्ट्ये",
+      "constitution": "संविधान",
+      "aiAssistant": "एआय सहाय्यक",
+      "about": "आमच्याबद्दल"
+    },
+
+    "cta": {
+      "login": "लॉगिन",
+      "getStarted": "सुरुवात करा",
+      "signup": "साइन अप करा"
+    }
+  },
+
+  "footer": {
+    "tagline": "भारताचे पहिले एआय-सक्षम व्हर्च्युअल न्यायव्यवस्था प्लॅटफॉर्म, प्रत्येक नागरिकासाठी न्याय सुलभ बनवत आहे.",
+
+    "quickLinks": "द्रुत दुवे",
+
+    "legal": "कायदेशीर",
+
+    "getInTouch": "संपर्क साधा",
+
+    "viewRepository": "रिपॉझिटरी पहा",
+
+    "allRightsReserved": "सर्व हक्क राखीव.",
+
+    "madeWith": "सह तयार केले",
+
+    "by": "द्वारे",
+
+    "privacyPolicy": "गोपनीयता धोरण",
+
+    "termsOfService": "सेवा अटी",
+
+    "disclaimer": "अस्वीकरण"
+  },
+
+  "common": {
+    "loading": "लोड होत आहे...",
+
+    "error": "त्रुटी",
+
+    "success": "यश",
+
+    "close": "बंद करा",
+
+    "save": "जतन करा",
+
+    "cancel": "रद्द करा",
+
+    "confirm": "पुष्टी करा",
+
+    "delete": "हटवा",
+
+    "edit": "संपादित करा",
+
+    "search": "शोधा",
+
+    "learnMore": "अधिक जाणून घ्या"
+  }
+}

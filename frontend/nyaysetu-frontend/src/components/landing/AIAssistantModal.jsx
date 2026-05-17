@@ -6,9 +6,12 @@ import { createPortal } from 'react-dom';
 import { brainAPI } from '../../services/api';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import { useTranslation } from 'react-i18next';
 
 export default function AIAssistantModal({ isOpen, onClose }) {
-    const { language } = useLanguage();
+    
+    const { t, i18n } = useTranslation('aiAssistant');
+    const language = i18n.language;
     const [chatStarted, setChatStarted] = useState(false);
     const [messages, setMessages] = useState([]);
     const [inputMessage, setInputMessage] = useState('');
@@ -50,9 +53,7 @@ export default function AIAssistantModal({ isOpen, onClose }) {
             console.error('AI Chat Error:', error);
             const errorMessage = {
                 role: 'ai',
-                content: language === 'en'
-                    ? 'Sorry, I encountered an error. Please try again.'
-                    : 'क्षमा करें, एक त्रुटि हुई। कृपया पुनः प्रयास करें।'
+                content: t('error')
             };
             setMessages(prev => [...prev, errorMessage]);
         } finally {
@@ -71,21 +72,9 @@ export default function AIAssistantModal({ isOpen, onClose }) {
 
     if (!isOpen) return null;
 
-    const sampleQuestions = language === 'en'
-        ? [
-            "What are my fundamental rights?",
-            "How do I file a case online?",
-            "Explain Article 21 of the Constitution",
-            "What is bail and how does it work?",
-            "How to find a lawyer near me?"
-        ]
-        : [
-            "मेरे मौलिक अधिकार क्या हैं?",
-            "मैं ऑनलाइन मामला कैसे दर्ज करूं?",
-            "संविधान के अनुच्छेद 21 को समझाएं",
-            "जमानत क्या है और यह कैसे काम करती है?",
-            "मेरे पास वकील कैसे खोजें?"
-        ];
+    const sampleQuestions = t('sampleQuestions', {
+        returnObjects: true
+    });
 
     return createPortal(
         <AnimatePresence>
@@ -204,14 +193,11 @@ export default function AIAssistantModal({ isOpen, onClose }) {
                                         WebkitBackgroundClip: 'text',
                                         WebkitTextFillColor: 'transparent'
                                     }}>
-                                        {language === 'en' ? 'AI-Powered Legal Brain' : 'AI-संचालित कानूनी मस्तिष्क'}
+                                        {t('title')}
                                     </h2>
 
                                     <p style={{ color: 'var(--text-secondary)', fontSize: '1.125rem', lineHeight: '1.6', maxWidth: '600px', margin: '0 auto' }}>
-                                        {language === 'en'
-                                            ? 'Your intelligent assistant that understands Indian law and provides instant answers to your legal queries.'
-                                            : 'आपका बुद्धिमान सहायक जो भारतीय कानून को समझता है और आपके कानूनी प्रश्नों के तत्काल उत्तर प्रदान करता है।'
-                                        }
+                                        {t('description')}
                                     </p>
                                 </motion.div>
 
@@ -227,7 +213,7 @@ export default function AIAssistantModal({ isOpen, onClose }) {
                                         textAlign: 'center'
                                     }}
                                 >
-                                    {language === 'en' ? '💡 Try Asking' : '💡 पूछने का प्रयास करें'}
+                                    {t('tryAsking')}
                                 </motion.h3>
 
                                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', marginBottom: '2rem' }}>
@@ -292,7 +278,7 @@ export default function AIAssistantModal({ isOpen, onClose }) {
                                         }}
                                     >
                                         <Sparkles size={20} />
-                                        {language === 'en' ? 'Start Chatting Now!' : 'अभी चैट करना शुरू करें!'}
+                                        {t('startChat')}
                                     </motion.button>
                                 </motion.div>
                             </div>
@@ -309,7 +295,7 @@ export default function AIAssistantModal({ isOpen, onClose }) {
                                     gap: '0.75rem'
                                 }}>
                                     <Brain size={32} style={{ color: '#8b5cf6' }} />
-                                    {language === 'en' ? 'Legal AI Assistant' : 'कानूनी AI सहायक'}
+                                    {t('legalAssistant')}
                                 </h2>
 
                                 {/* Messages Area */}
@@ -358,7 +344,7 @@ export default function AIAssistantModal({ isOpen, onClose }) {
                                             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                                                 <Loader2 size={16} style={{ color: '#8b5cf6', animation: 'spin 1s linear infinite' }} />
                                                 <p style={{ color: '#94a3b8', fontSize: '0.9rem', margin: 0 }}>
-                                                    {language === 'en' ? 'Thinking...' : 'सोच रहा हूँ...'}
+                                                    {t('thinking')}
                                                 </p>
                                             </div>
                                         </div>
@@ -373,7 +359,7 @@ export default function AIAssistantModal({ isOpen, onClose }) {
                                         value={inputMessage}
                                         onChange={(e) => setInputMessage(e.target.value)}
                                         onKeyPress={(e) => e.key === 'Enter' && sendMessage(inputMessage)}
-                                        placeholder={language === 'en' ? 'Ask me anything about Indian law...' : 'भारतीय कानून के बारे में कुछ भी पूछें...'}
+                                        placeholder={t('placeholder')}
                                         style={{
                                             flex: 1,
                                             padding: '1rem',

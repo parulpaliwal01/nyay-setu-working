@@ -13,6 +13,18 @@ export default function Header({ hideAuthButtons = false, onConstitutionClick })
 
     // Use react-i18next
     const { t, i18n } = useTranslation('common');
+    const languages = [
+    { code: 'en', label: 'English' },
+    { code: 'hi', label: 'हिंदी' },
+    { code: 'mr', label: 'मराठी' },
+    { code: 'ta', label: 'தமிழ்' },
+    { code: 'te', label: 'తెలుగు' },
+    { code: 'gu', label: 'ગુજરાતી' },
+    { code: 'kn', label: 'ಕನ್ನಡ' },
+    { code: 'bn', label: 'বাংলা' },
+    { code: 'ml', label: 'മലയാളം' },
+    { code: 'pa', label: 'ਪੰਜਾਬੀ' }
+    ];
 
     useEffect(() => {
         const handleScroll = () => {
@@ -156,34 +168,37 @@ export default function Header({ hideAuthButtons = false, onConstitutionClick })
                 {/* CTA Buttons */}
                 <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }} className="desktop-cta">
                     {/* Language Toggle */}
-                    <button
-                        onClick={() => i18n.changeLanguage(i18n.language === 'en' ? 'hi' : 'en')}
-                        style={{
-                            padding: '0.6rem 1rem',
-                            background: 'transparent',
-                            border: '1px solid #CBD5E1',
-                            borderRadius: '10px',
-                            color: 'var(--color-primary)',
-                            cursor: 'pointer',
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '0.5rem',
-                            fontWeight: '600',
-                            fontSize: '0.875rem',
-                            transition: 'all 0.3s ease-out'
-                        }}
-                        onMouseEnter={(e) => {
-                            e.currentTarget.style.background = '#F1F5F9';
-                            e.currentTarget.style.borderColor = 'var(--color-primary)';
-                        }}
-                        onMouseLeave={(e) => {
-                            e.currentTarget.style.background = 'transparent';
-                            e.currentTarget.style.borderColor = '#CBD5E1';
-                        }}
-                    >
-                        <Globe size={16} />
-                        {i18n.language === 'en' ? 'हिंदी' : 'EN'}
-                    </button>
+                    <div style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.5rem',
+                        padding: '0.6rem 1rem',
+                        border: '1px solid #CBD5E1',
+                        borderRadius: '10px',
+                        background: 'transparent'
+                    }}>
+                        <Globe size={16} color="#1E2A44" />
+
+                        <select
+                            value={i18n.language}
+                            onChange={(e) => i18n.changeLanguage(e.target.value)}
+                            style={{
+                                border: 'none',
+                                outline: 'none',
+                                background: 'transparent',
+                                color: 'var(--color-primary)',
+                                fontWeight: '600',
+                                fontSize: '0.875rem',
+                                cursor: 'pointer'
+                            }}
+                        >
+                            {languages.map((lang) => (
+                                <option key={lang.code} value={lang.code}>
+                                    {lang.label}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
 
                     {!hideAuthButtons && (
                         <>
