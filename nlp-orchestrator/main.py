@@ -440,7 +440,7 @@ async def deep_research_pipeline(query: str, language: str):
 
         # Build grounded prompt with Kanoon context
         grounded_prompt = DEEP_RESEARCH_SYSTEM_PROMPT.format(
-            kanoon_context=kanoon_context if kanoon_context else "No specific Indian Kanoon context found. Use your general legal knowledge but clearly state you cannot verify specific judgments.",
+            kanoon_context=kanoon_context if kanoon_context else "No specific Indian Kanoon judgments found for this query. If the query is legal in nature, provide general legal guidance based on Indian statutes. If the query is non-legal, follow the refusal mandate in your system prompt.",
             user_query=query
         )
 
@@ -568,6 +568,25 @@ async def deep_research(body: LegalQuery, request: Request):
     logger.info(f"[Deep Research] New query: {body.query[:80]}")
 
     async def event_generator():
+        pipeline = deep_research_pipeline(body.query, body.language)
+
+        async for event in pipeline:
+            if await request.is_disconnected():
+                logger.info("[Deep Research] Client disconnected")
+                break
+            yield {"data": event}
+
+    return EventSourceResponse(event_generator())
+
+
+# ─── Run ──────────────────────────────────────────────────────────────────────
+
+if __name__ == "__main__":
+    import uvicorn
+    port = int(os.getenv("PORT", 8001))
+    uvicorn.run("main:app", host="0.0.0.0", port=port)
+
+ event_generator():
         pipeline = deep_research_pipeline(body.query, body.language)
 
         async for event in pipeline:
