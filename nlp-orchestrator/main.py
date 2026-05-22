@@ -8,6 +8,7 @@ Endpoints:
   POST /api/legal/analyze           — Sync version (testing only)
   GET  /health                      — Health check
 """
+import os
 from utils import async_retry
 import asyncio
 import json
@@ -64,7 +65,13 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[FRONTEND_ORIGIN, "http://localhost:3000", "http://localhost:8080"],
+    allow_origins=[
+        FRONTEND_ORIGIN,
+        "http://localhost:3000",
+        "http://localhost:5173",
+        "http://localhost:8080",
+        "https://nyaysetu-lovat.vercel.app",
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -576,5 +583,6 @@ async def deep_research(body: LegalQuery, request: Request):
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("main:app", host="0.0.0.0", port=8001, reload=True)
+    port = int(os.getenv("PORT", 8001))
+    uvicorn.run("main:app", host="0.0.0.0", port=port)
 

@@ -335,7 +335,8 @@ export default function VakilFriendChat() {
         setKanoonResults([]);
 
         try {
-            const response = await fetch('http://localhost:8001/research/deep', {
+            const nlpBaseUrl = import.meta.env.VITE_NLP_BASE_URL || 'http://localhost:8001';
+            const response = await fetch(`${nlpBaseUrl}/research/deep`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ query, language }),
