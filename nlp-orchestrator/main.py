@@ -465,8 +465,7 @@ async def deep_research_pipeline(query: str, language: str):
 
         if model_choice == "gemini" and gemini_client:
             try:
-                loop = asyncio.get_event_loop()
-
+                loop = asyncio.get_running_loop()
                 response = await loop.run_in_executor(
                     None,
                     lambda: gemini_client.models.generate_content(
